@@ -14,15 +14,30 @@ class LinkedList
   end
 
   def append(value)
-    @head = Node.new(value) unless @head
+    if @head
+      current = @head
+      current = current.next_node until current.next_node.nil?
+      current.next_node = Node.new(value)
+    else
+      @head = Node.new(value) unless @head
+    end
+  end
+
+  def to_s
+    str = ""
+    node = @head
+    until node.nil?
+      str += "(#{node.value.inspect}) -> "
+      node = node.next_node
+    end
+    str += "nil"
   end
 end
 
 list = LinkedList.new
-puts("Head: #{list.head}")
-list.append(5)
-puts("Head: #{list.head.value} Next: #{list.head.next_node}")
-list.append(3)
-puts("Head: #{list.head.value} Next: #{list.head.next_node}")
 list.append(1)
-puts("Head: #{list.head.value} Next: #{list.head.next_node}")
+list.append("hello")
+list.append(2)
+list.append("3")
+list.append([1,2,3])
+puts list
