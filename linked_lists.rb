@@ -74,6 +74,17 @@ class LinkedList
     false
   end
 
+  def find(value)
+    index = 0
+    current = head
+    while current
+      return index if current.value == value
+      current = current.next_node
+      index += 1
+    end
+    nil
+  end
+
   def to_s
     str = ""
     node = @head
@@ -100,3 +111,6 @@ puts list
 p list.contains?(2)
 p list.contains?(5)
 p list.contains?("hello")
+p list.find(2)
+p list.find(5)
+p list.find("hello")
