@@ -85,6 +85,13 @@ class LinkedList
     nil
   end
 
+  def insert_at(index, value)
+    return prepend(value) if index == 0
+    current_node = head
+    (index-1).times { current_node = current_node.next_node }
+    current_node.next_node = Node.new(value, current_node.next_node)
+  end
+
   def to_s
     str = ""
     node = @head
@@ -98,19 +105,15 @@ end
 
 list = LinkedList.new
 list.append(1)
-list.append("hello")
 list.append(2)
-list.append("3")
-list.append([1,2,3])
+list.append(3)
 puts list
 list.prepend("prepend")
 puts list
-p("List size: #{list.size}")
 list.pop
 puts list
-p list.contains?(2)
-p list.contains?(5)
-p list.contains?("hello")
-p list.find(2)
-p list.find(5)
-p list.find("hello")
+p("List size: #{list.size}")
+list.insert_at(0, "insert @ 0")
+puts list
+list.insert_at(1, "insert @ 1")
+puts list
