@@ -38,7 +38,7 @@ class LinkedList
   end
 
   def head
-      @head
+    @head
   end
 
   def tail
@@ -47,6 +47,13 @@ class LinkedList
       return current if current.next_node.nil?
       current = current.next_node
     end
+  end
+
+  def at(index)
+    return head if index == 0
+    current = @head
+    index.times { current = current.next_node }
+    current
   end
 
   def to_s
@@ -72,3 +79,4 @@ puts list
 p("List size: #{list.size}")
 p list.head.value
 p list.tail.value
+p list.at(3).value
