@@ -112,22 +112,3 @@ class LinkedList
     str += "nil"
   end
 end
-
-list = LinkedList.new
-list.append(1)
-list.append(2)
-list.append(3)
-puts list
-list.prepend("prepend")
-puts list
-list.pop
-puts list
-p("List size: #{list.size}")
-list.insert_at(0, "insert @ 0")
-puts list
-list.insert_at(1, "insert @ 1")
-puts list
-list.remove_at(1)
-puts list
-list.insert_at(99, 99)
-puts list
