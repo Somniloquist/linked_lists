@@ -8,10 +8,9 @@ class Node
 end
 
 class LinkedList
-  attr_accessor :head, :size
+  attr_accessor :head
   def initialize(head = nil)
     @head = head
-    @size = 0
   end
 
   def append(value)
@@ -22,12 +21,20 @@ class LinkedList
     else
       @head = Node.new(value) unless @head
     end
-    @size += 1
   end
 
   def prepend(value)
     @head ? @head = Node.new(value, @head) : append(value)
-    @size += 1
+  end
+
+  def size
+    count = 0
+    current = @head
+    while current
+      count += 1
+      current = current.next_node
+    end
+    count
   end
 
   def to_s
@@ -51,3 +58,4 @@ puts list
 list.prepend("prepend")
 puts list
 puts("List size: #{list.size}")
+puts list.head
