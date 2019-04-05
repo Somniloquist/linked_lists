@@ -3,7 +3,7 @@ class Node
   attr_accessor :value, :next_node
   def initialize(value = nil, next_node = nil)
     @value = value
-    @next_node = nil
+    @next_node = next_node
   end
 end
 
@@ -23,6 +23,10 @@ class LinkedList
     end
   end
 
+  def prepend(value)
+    @head ? @head = Node.new(value, @head) : append(value)
+  end
+
   def to_s
     str = ""
     node = @head
@@ -35,9 +39,11 @@ class LinkedList
 end
 
 list = LinkedList.new
-list.append(1)
+list.append(1
 list.append("hello")
 list.append(2)
 list.append("3")
 list.append([1,2,3])
+puts list
+list.prepend("prepend")
 puts list
