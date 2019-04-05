@@ -37,6 +37,18 @@ class LinkedList
     count
   end
 
+  def head
+      @head
+  end
+
+  def tail
+    current = @head
+    loop do
+      return current if current.next_node.nil?
+      current = current.next_node
+    end
+  end
+
   def to_s
     str = ""
     node = @head
@@ -57,5 +69,6 @@ list.append([1,2,3])
 puts list
 list.prepend("prepend")
 puts list
-puts("List size: #{list.size}")
-puts list.head
+p("List size: #{list.size}")
+p list.head.value
+p list.tail.value
