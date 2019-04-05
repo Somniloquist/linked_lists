@@ -8,9 +8,10 @@ class Node
 end
 
 class LinkedList
-  attr_accessor :head
+  attr_accessor :head, :size
   def initialize(head = nil)
     @head = head
+    @size = 0
   end
 
   def append(value)
@@ -21,10 +22,12 @@ class LinkedList
     else
       @head = Node.new(value) unless @head
     end
+    @size += 1
   end
 
   def prepend(value)
     @head ? @head = Node.new(value, @head) : append(value)
+    @size += 1
   end
 
   def to_s
@@ -39,7 +42,7 @@ class LinkedList
 end
 
 list = LinkedList.new
-list.append(1
+list.append(1)
 list.append("hello")
 list.append(2)
 list.append("3")
@@ -47,3 +50,4 @@ list.append([1,2,3])
 puts list
 list.prepend("prepend")
 puts list
+puts("List size: #{list.size}")
