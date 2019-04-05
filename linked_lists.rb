@@ -56,6 +56,15 @@ class LinkedList
     current
   end
 
+  def pop
+    if size == 1
+      @head = nil
+    else
+      current = self.at(size - 2)
+      current.next_node = nil
+    end
+  end
+
   def to_s
     str = ""
     node = @head
@@ -80,3 +89,15 @@ p("List size: #{list.size}")
 p list.head.value
 p list.tail.value
 p list.at(3).value
+list.pop
+puts list
+list.pop
+puts list
+list.pop
+puts list
+list.pop
+puts list
+list.pop
+puts list
+list.pop
+puts list
