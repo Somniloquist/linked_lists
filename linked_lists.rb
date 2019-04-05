@@ -86,10 +86,20 @@ class LinkedList
   end
 
   def insert_at(index, value)
+    return append(value) if index >= size
     return prepend(value) if index == 0
     current_node = head
     (index-1).times { current_node = current_node.next_node }
     current_node.next_node = Node.new(value, current_node.next_node)
+  end
+
+  def remove_at(index)
+    return nil if index >= size
+    temp_left = @head
+    temp_right = @head
+    (index-1).times { temp_left = temp_left.next_node}
+    (index).times { temp_right = temp_right.next_node}
+    temp_left.next_node = temp_right.next_node
   end
 
   def to_s
@@ -116,4 +126,8 @@ p("List size: #{list.size}")
 list.insert_at(0, "insert @ 0")
 puts list
 list.insert_at(1, "insert @ 1")
+puts list
+list.remove_at(1)
+puts list
+list.insert_at(99, 99)
 puts list
